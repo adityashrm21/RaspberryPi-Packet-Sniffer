@@ -4,4 +4,4 @@ A simple sniffing tool created using Raspberry Pi
 ### Setting up your Raspberry Pi
 
 1. prerequisites:
-2. *aasdasd
+..*aasdasd
