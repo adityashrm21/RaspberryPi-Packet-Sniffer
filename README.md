@@ -55,7 +55,8 @@ to update your Pi to the newest available updates
 sudo apt-get install dnsmasq hostapd
 ```
 and hit **y** when prompted to do so
-The next step you need to do is to provide your wlan0 interface with a static IP. We already have our raspberry pi connected to the ethernet cable from whihc we will be sharing our internet
+
+5. The next step you need to do is to provide your wlan0 interface with a static IP. We already have our raspberry pi connected to the ethernet cable from whihc we will be sharing our internet
 6. We will be using dhcpcd(most feature-rich open source DHCP client) to configure our interface configuration so open it up using
 ```bash 
 sudo nano /etc/dhcpcd.conf
