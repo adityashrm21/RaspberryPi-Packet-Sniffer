@@ -1,4 +1,4 @@
-# RaspberryPi-honeypot
+# RaspberryPi-Sniffer
 #####A simple sniffing tool created using Raspberry Pi
 
 ### Setting up your Raspberry Pi
@@ -55,11 +55,13 @@ to update your Pi to the newest available updates
 sudo apt-get install dnsmasq hostapd
 ```
 and hit **y** when prompted to do so
-5. The next step you need to do is to provide your wlan0 interface with a static IP. We already have our raspberry pi connected to the ethernet cable from whihc we will be sharing our internet
+The next step you need to do is to provide your wlan0 interface with a static IP. We already have our raspberry pi connected to the ethernet cable from whihc we will be sharing our internet
 6. We will be using dhcpcd(most feature-rich open source DHCP client) to configure our interface configuration so open it up using
 ```bash 
 sudo nano /etc/dhcpcd.conf
 ```
 7. We need to tell it that our wlan0 has a static IP. So add these lines to it at the bottom of the file:
-  **interface wlan0**
-    **static ip_address=172.24.1.1/24**
+```bash
+interface wlan0
+static ip_address=172.22.1.1/24**
+```
