@@ -69,27 +69,41 @@ to update your Pi to the newest available updates
   interface wlan0
       static ip_address=172.24.1.1/24
   ```
-8. We also need to prevent *wpa_supplicant* from running and interfering with setting up *wlan0* in access point mode. To do this open up the interface configuration file with 
+8. We also need to prevent **wpa_supplicant** from running and interfering with setting up **wlan0** in access point mode. To do this open up the interface configuration file with 
 
   ```bash
   sudo nano /etc/network/interfaces
   ```
-and comment out the line containing *wpa-conf* in the *wlan0* section, so that it looks like this
+and comment out the line containing **wpa-conf** in the **wlan0** section, so that it looks like this
 
   ```bash
   allow-hotplug wlan0  
   iface wlan0 inet manual  
   #    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
   ```
-9. Now restart *dhcpcd* with
+9. Now restart **dhcpcd** with
   
   ```bash
   sudo service dhcpcd restart
   ```
-and it should assign *wlan0* with a static IP address
+and it should assign **wlan0** with a static IP address
 10. Now we need to configure **hostapd**. Change the configuration file for hostapd using
 
   ```bash
   sudo nano /etc/hostapd/hostapd.conf
   ```
 with the contents given in the hostapd.conf file in the repository
+10. To check whether all we've been doing is working or not, just run this command
+  
+  ```bash
+  sudo /usr/sbin/hostapd /etc/hostapd/hostapd.conf
+  ```
+If everything goes well, you should be able to see the network Pi3-AP from your mobile phone or laptop device. You can try connecting to it in whoch case you would see some output from the Pi but you won't be allotted an IP address until we configure dnsmasq. So press **Ctrl + c** to stop it
+11. Right now, hostapd is not configured to work on a fresh boot. So we also need to tell hostapd where to look for the config file when it starts up on boot. Open up the default configuration file with 
+
+  ```bash
+  sudo nano /etc/default/hostapd 
+  ```
+  and find the line **#DAEMON_CONF=""** and replace it with **DAEMON_CONF="/etc/hostapd/hostapd.conf"** and this would do the job
+  
+####Setting up dnsmasq
