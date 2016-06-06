@@ -67,5 +67,18 @@ to update your Pi to the newest available updates
 
   ```bash
   interface wlan0
-  static ip_address=172.22.1.1/24**
+  static ip_address=172.24.1.1/24
   ```
+8. We also need to prevent *wpa_supplicant* from running and interfering with setting up *wlan0* in access point mode. To do this open up the interface configuration file with 
+
+  ```bash
+  sudo nano /etc/network/interfaces
+  ```
+and comment out the line containing *wpa-conf* in the *wlan0* section, so that it looks like this
+
+  ```bash
+  allow-hotplug wlan0  
+  iface wlan0 inet manual  
+  #    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+  ```
+9. 
