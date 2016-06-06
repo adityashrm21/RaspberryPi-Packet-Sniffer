@@ -5,7 +5,7 @@ A simple sniffing tool created using Raspberry Pi
 
 ####Prerequisites:
 
-1. A Micro SD card of at least 8GB size and class 4
+1. A class 4 Micro SD card of at least 8GB size
 2. A Raspberry Pi 3 board (obviously)
 3. A USB cable with an adapter to power the Pi up
 4. Keyboard and Mouse (USB)
