@@ -50,7 +50,7 @@ to update your Pi to the newest available updates
 1. If you have an ethernet cable plugged in into your Pi, you can start the web browser and see if the internet is working or not
 2. Now type ifconfig in the terminal and note the IP address of your Pi in the eth0 interface(this would be the IP address of the Pi)
 3. You now want to create a wifi-hotspot using the wifi-card on the Pi. This can be achieved using a service called hostapd but you don't just want the hotspot, you also want the internet access through the wireless access point. You also install the dnsmasq service for this purpose which is an easy to configure DNS and DHCP server
-4. Use the command: 
+4. Use the command 
 ```bash
 sudo apt-get install dnsmasq hostapd
 ```
