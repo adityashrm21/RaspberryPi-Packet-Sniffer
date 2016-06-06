@@ -35,4 +35,11 @@
 
 1. Now after the Pi has completed the boot process, a login will appear where you can use the default settings for login into the Pi: Username - pi, Password - raspberry
 2. When you have succeessfully logged in, you will see the command line prompt pi@raspberrypi~$
+3. Now once you are logged into you Pi, run **sudo apt-get update** and **sudo apt-get upgrade** to update your Pi to the newest available updates
 
+####Steps to create a Wifi-access point
+
+1. If you have an ethernet cable plugged in into your Pi, you can start the web browser and see if the internet is working or not
+2. Now type ifconfig in the terminal and note the IP address of your Pi in the eth0 interface(this would be the IP address of the Pi)
+3. You now want to create a wifi-hotspot using the wifi-card on the Pi. This can be achieved using a service called hostapd but you don't just want the hotspot, you also want the internet access through the wireless access point. You also install the dnsmasq service for this purpose
+4. Use the command: **sudo apt-get install dnsmasq hostapd** and hit y when prompted to do so
