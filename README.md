@@ -107,3 +107,9 @@ If everything goes well, you should be able to see the network Pi3-AP from your 
   and find the line **#DAEMON_CONF=""** and replace it with **DAEMON_CONF="/etc/hostapd/hostapd.conf"** and this would do the job
   
 ####Setting up dnsmasq
+
+To be continued...
+
+#####Sources: 
+1. [Raspberry Pi Official Documentation](https://www.raspberrypi.org/help/noobs-setup/)
+2. [Frillip's blog](https://frillip.com/using-your-raspberry-pi-3-as-a-wifi-access-point-with-hostapd/)
