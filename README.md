@@ -19,7 +19,7 @@
 1. You need to install the latest version of NOOBS or Raspbian on your Pi, and for that you need a bootable SD card with the OS installed on it
 2. You need to format your SD card first. Download [SD Formatter 4.0](https://www.sdcard.org/downloads/formatter_4/) for either Windows or Mac and install it
 3. Follow the instructions on the software and using a USB Micro SD card reader or an adapter, format the SD card using you laptop or PC
-4. Now you need to install the image of the OS on the Micro SD card. Download the image of the OS from the [official website](https://www.raspberrypi.org/downloads/)
+4. Now you need to install the image of the OS on the Micro SD card. [Download](https://www.raspberrypi.org/downloads/) the image of the OS from the official website
 5. Download the [Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/) and install it on your computer. Now run the application and choose the OS image and the SD card drive from the drop down or browse menu and click on write
 6. Now you have your OS on the SD card and you are ready to use it to boot your Pi
 
