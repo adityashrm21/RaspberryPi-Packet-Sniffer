@@ -1,5 +1,5 @@
 # RaspberryPi-honeypot
-A simple sniffing tool created using Raspberry Pi
+#####A simple sniffing tool created using Raspberry Pi
 
 ### Setting up your Raspberry Pi
 
@@ -11,7 +11,7 @@ A simple sniffing tool created using Raspberry Pi
 4. Keyboard and Mouse (USB)
 5. A Monitor or a TV as a display for thr Pi
 6. Display connection cables: HDMI cable/ HDMI to VGA converter(if your monitor does not have an HDMI port)
-7. Ethernet cables if you want to access internet through ethernet on the Pi(Pi 3 comes with a built-in wireless LAN card which is very useful for our purpose, otherwise we would have needed a Wifi-Dongle)
+7. Ethernet cable if you want to access internet through ethernet on the Pi which actualy we do want(Pi 3 comes with a built-in wireless LAN card which is very useful for our purpose, otherwise we would have needed a Wifi-Dongle)
 
 
 ####Getting the Operating System to install on the Pi
@@ -25,4 +25,14 @@ A simple sniffing tool created using Raspberry Pi
 
 ####Plugging in your Raspberry Pi
 
+1. Slot in your Micro SD card into the slot provided on the Raspberry Pi which would fit in only one way
+2. Plug in your USB keyboard and mouse in the port provided on the Pi
+3. Now for display, connect the HDMI cable from the Pi to the Monitor or TV depending on what you are using (you need to make sure that your monitor/TV is turned on and the appropriate mode is selected for display(HDMI/VGA/etc.)
+4. Now plug in the ethernet cable into the ethernet port provided on th Pi neext to the USB ports (you can know if its working if your Pi shows a flickering green light when turned on)
+5. When all these cables are plugged in properly, you are ready to fire up the Pi. Just plug in the micro USB power supply and this would turn on and boot your Raspberry Pi
+
+####Logging into your Raspberry Pi
+
+1. Now after the Pi has completed the boot process, a login will appear where you can use the default settings for login into the Pi: Username - pi, Password - raspberry
+2. When you have succeessfully logged in, you will see the command line prompt pi@raspberrypi~$
 
