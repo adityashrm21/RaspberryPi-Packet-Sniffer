@@ -41,5 +41,10 @@
 
 1. If you have an ethernet cable plugged in into your Pi, you can start the web browser and see if the internet is working or not
 2. Now type ifconfig in the terminal and note the IP address of your Pi in the eth0 interface(this would be the IP address of the Pi)
-3. You now want to create a wifi-hotspot using the wifi-card on the Pi. This can be achieved using a service called hostapd but you don't just want the hotspot, you also want the internet access through the wireless access point. You also install the dnsmasq service for this purpose
-4. Use the command: **sudo apt-get install dnsmasq hostapd** and hit y when prompted to do so
+3. You now want to create a wifi-hotspot using the wifi-card on the Pi. This can be achieved using a service called hostapd but you don't just want the hotspot, you also want the internet access through the wireless access point. You also install the dnsmasq service for this purpose which is an easy to configure DNS and DHCP server
+4. Use the command: **sudo apt-get install dnsmasq hostapd** and hit **y** when prompted to do so
+5. The next step you need to do is to provide your wlan0 interface with a static IP. We already have our raspberry pi connected to the ethernet cable from whihc we will be sharing our internet
+6. We will be using dhcpcd(most feature-rich open source DHCP client) to configure our interface configuration so open it up using **sudo nano /etc/dhcpcd.conf**
+7. We need to tell it that our wlan0 has a static IP. So add these lines to it at the bottom of the file:
+  **interface wlan0**
+    **static ip_address=172.24.1.1/24**
