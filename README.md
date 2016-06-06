@@ -14,7 +14,7 @@ A simple sniffing tool created using Raspberry Pi
 7. Ethernet cables if you want to access internet through ethernet on the Pi(Pi 3 comes with a built-in wireless LAN card which is very useful for our purpose, otherwise we would have needed a Wifi-Dongle)
 
 
-####Getting the Operating System to install on th Pi
+####Getting the Operating System to install on the Pi
 
 1. You need to install the latest version of NOOBS or Raspbian on your Pi, and for that you need a bootable SD card with the OS installed on it
 2. You need to format your SD card first. Download [SD Formatter 4.0](https://www.sdcard.org/downloads/formatter_4/) for either Windows or Mac and install it
@@ -25,5 +25,4 @@ A simple sniffing tool created using Raspberry Pi
 
 ####Plugging in your Raspberry Pi
 
-1. You need
 
