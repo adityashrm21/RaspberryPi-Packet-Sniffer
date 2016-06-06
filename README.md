@@ -35,7 +35,15 @@
 
 1. Now after the Pi has completed the boot process, a login will appear where you can use the default settings for login into the Pi: Username - pi, Password - raspberry
 2. When you have succeessfully logged in, you will see the command line prompt pi@raspberrypi~$
-3. Now once you are logged into you Pi, run ```bash sudo apt-get update ``` and ```bash sudo apt-get upgrade``` to update your Pi to the newest available updates
+3. Now once you are logged into you Pi, run
+```bash 
+sudo apt-get update 
+``` 
+and 
+```bash 
+sudo apt-get upgrade
+``` 
+to update your Pi to the newest available updates
 
 ####Steps to create a Wifi-access point
 
