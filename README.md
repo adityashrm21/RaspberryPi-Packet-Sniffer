@@ -137,7 +137,7 @@ If everything goes well, you should be able to see the network Pi3-AP from your 
   ```bash
   sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
   ```
-  and this will copy the settings to **iptables,ipv4.nat** file
+  and this will copy the settings to **iptables.ipv4.nat** file
 6. now we need dhcpcd to run this and we do this by opening:
 
   ```bash
@@ -161,6 +161,8 @@ If everything goes well, you should be able to see the network Pi3-AP from your 
   sudo reboot
   ```
 Now you would be able to connect to the internet through the Pi's network!
+
+To be continued...
 
 #####Sources: 
 1. [Raspberry Pi Official Documentation](https://www.raspberrypi.org/help/noobs-setup/)
