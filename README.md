@@ -108,13 +108,59 @@ If everything goes well, you should be able to see the network Pi3-AP from your 
   
 ####Setting up dnsmasq
 
-The dnsmasq config file that comes preinstalled contains a lot of functionalities that we don't require at all so we delete it and create a new one using:
+1. The dnsmasq config file that comes preinstalled contains a lot of functionalities that we don't require at all so we delete it and create a new one using and paste the contents of **dnsmasq.conf** into it:
 
   ```bash
   sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig  
   sudo nano /etc/dnsmasq.conf
   ```
+2. Now we need to enable packet forwarding. For this we need to open sysctl.conf using:
 
+  ```bash
+  sudo nano /etc/sysctl.conf
+  ```
+  and uncommenting the line **net.ipv4.ip_forward=1** and it will be enabled on the next boot
+3. But to enable it for this session we quickly do:
+
+  ```bash
+  sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+  ```
+4. Now we also need to share our Pi's internet to the devices connected to it throught the Wifi by configuring a NAT between the **eth0** and **wlan0** interface. We do this using the following commands:
+
+  ```bash
+  sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE  
+  sudo iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT  
+  sudo iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT 
+  ```
+5. But to enable the above settings everytime we boot, we need to do:
+
+  ```bash
+  sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+  ```
+  and this will copy the settings to **iptables,ipv4.nat** file
+6. now we need dhcpcd to run this and we do this by opening:
+
+  ```bash
+  sudo nano /lib/dhcpcd/dhcpcd-hooks/70-ipv4-nat
+  ```
+  and adding this to the file and save it:
+  
+  ```bash
+  iptables-restore < /etc/iptables.ipv4.nat  
+  ```
+  
+7. now we are just one step behind sharing our internet through the Pi, just do:
+
+  ```bash
+  sudo service hostapd start  
+  sudo service dnsmasq start
+  ```
+  and reboot the Pi for rechecking everything worked correctly using:
+  
+  ```bash
+  sudo reboot
+  ```
+Now you would be able to connect to the internet through the Pi's network!
 
 #####Sources: 
 1. [Raspberry Pi Official Documentation](https://www.raspberrypi.org/help/noobs-setup/)
