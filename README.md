@@ -1,5 +1,5 @@
 # RaspberryPi-Sniffer
-#####A simple sniffing tool created using Raspberry Pi
+#####A simple HTTP and HTTPS sniffing tool created using Raspberry Pi (only for educational purposes)
 
 ### Setting up your Raspberry Pi
 
@@ -108,7 +108,13 @@ If everything goes well, you should be able to see the network Pi3-AP from your 
   
 ####Setting up dnsmasq
 
-To be continued...
+The dnsmasq config file that comes preinstalled contains a lot of functionalities that we don't require at all so we delete it and create a new one using:
+
+  ```bash
+  sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig  
+  sudo nano /etc/dnsmasq.conf
+  ```
+
 
 #####Sources: 
 1. [Raspberry Pi Official Documentation](https://www.raspberrypi.org/help/noobs-setup/)
