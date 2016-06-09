@@ -171,7 +171,17 @@ Now we would tweak some settings and configurations and use **mitmproxy** to set
   ```bash
   sudo pip install mitmproxy
   ```
-2. Now we need to set up a transparent proxy using the iptables which can be done using the commands in the mitm.sh file in the repository
+2. Now we need to set up a **transparent proxy** using the iptables which can be done using the commands in the **mitm.sh** file in the repository
+3. Now run the **mitm.sh** file using:
+
+  ```bash
+  sudo ./mitm.sh
+  ```
+4. Now connect you phone to the Pi's hotspot and open your browser and browse some sites and you will see the data being generated in the console will all the http requests and responses
+5. You can use the [mitmproxy documentation](http://docs.mitmproxy.org/en/stable/mitmproxy.html) for more information on how to use, look and store the data collected by mitmproxy
+6. So we are set up as a man in the middle for the users connected to our Pi's network. But note here that we are only able to get information about the **HTTP** requests and not the **HTTPS** requests which are encrypted and need further hacking to break into which we do below
+
+To be continued...
 
 #####Sources: 
 1. [Raspberry Pi Official Documentation](https://www.raspberrypi.org/help/noobs-setup/)
