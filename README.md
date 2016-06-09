@@ -162,7 +162,16 @@ If everything goes well, you should be able to see the network Pi3-AP from your 
   ```
 Now you would be able to connect to the internet through the Pi's network!
 
-To be continued...
+####Man in the Middle Pi
+
+Now we would tweak some settings and configurations and use **mitmproxy** to set up a man in the middle attack using our Raspberry Pi on it's hotspot
+
+1. First you would need to install mitmproxy and any dependencies related to it:
+
+  ```bash
+  sudo pip install mitmproxy
+  ```
+2. Now we need to set up a transparent proxy using the iptables which can be done using the commands in the mitm.sh file in the repository
 
 #####Sources: 
 1. [Raspberry Pi Official Documentation](https://www.raspberrypi.org/help/noobs-setup/)
