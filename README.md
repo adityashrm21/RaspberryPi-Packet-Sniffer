@@ -185,5 +185,5 @@ To be continued...
 
 #####Sources: 
 1. [Raspberry Pi Official Documentation](https://www.raspberrypi.org/help/noobs-setup/)
-2. [Frillip's blog](https://frillip.com/using-your-raspberry-pi-3-as-a-wifi-access-point-with-hostapd/)
+2. [Frillip's Blog](https://frillip.com/using-your-raspberry-pi-3-as-a-wifi-access-point-with-hostapd/)
 3. [Marxy's Blog](http://blog.marxy.org/2013/08/reverse-engineering-network-traffic.html)
