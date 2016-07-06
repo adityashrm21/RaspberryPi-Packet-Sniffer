@@ -185,7 +185,7 @@ Now we would tweak some settings and configurations and use **mitmproxy** to set
 
 1. To get mitmproxy working for secure sites, you need to make a fake SSL certificate for the site you want to sniff and this would work even when the certificate is invalid because of the reasons given in [Priyank's blog](http://priyaaank.tumblr.com/post/81172916565/validating-ssl-certificates-in-mobile-apps) which you can go through
 2. So now follow the steps given below to create your fake certificate:
-..1. openssl genrsa -out myown.cert.key 8192
+* openssl genrsa -out myown.cert.key 8192
 ..2. openssl req -new -x509 -key myown.cert.key -out pocketsfake.cert
 ..3. Specify all values like Company, BU, Country etc, as they appear in real certificate.
 ..4. cat myown.cert.key pocketsfake.cert > pocketsfake.pem
