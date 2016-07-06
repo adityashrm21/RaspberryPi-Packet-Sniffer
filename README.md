@@ -177,11 +177,18 @@ Now we would tweak some settings and configurations and use **mitmproxy** to set
   ```bash
   sudo ./mitm.sh
   ```
-4. Now connect you phone to the Pi's hotspot and open your browser and browse some sites and you will see the data being generated in the console will all the http requests and responses
+4. Now connect your phone to the Pi's hotspot and open your browser and browse some sites and you will see the data being generated in the console will all the http requests and responses
 5. You can use the [mitmproxy documentation](http://docs.mitmproxy.org/en/stable/mitmproxy.html) for more information on how to use, look and store the data collected by mitmproxy
 6. So we are set up as a man in the middle for the users connected to our Pi's network. But note here that we are only able to get information about the **HTTP** requests and not the **HTTPS** requests which are encrypted and need further hacking to break into which we do below
 
-To be continued...
+####Configuring mitmproxy for secure connections
+
+1. To get mitmproxy working for secure sites, you need to make a fake SSL certificate for the site you want to sniff and this would work even when the certificate is invalid because of the reasons given in [Priyank's blog](http://priyaaank.tumblr.com/post/81172916565/validating-ssl-certificates-in-mobile-apps) which you can go through
+2. So now follow the steps given below to create your fake certificate:
+..1. openssl genrsa -out myown.cert.key 8192
+..2. openssl req -new -x509 -key myown.cert.key -out pocketsfake.cert
+..3. Specify all values like Company, BU, Country etc, as they appear in real certificate.
+..4. cat myown.cert.key pocketsfake.cert > pocketsfake.pem
 
 #####Sources: 
 1. [Raspberry Pi Official Documentation](https://www.raspberrypi.org/help/noobs-setup/)
