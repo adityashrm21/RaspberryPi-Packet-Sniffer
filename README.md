@@ -185,12 +185,23 @@ Now we would tweak some settings and configurations and use **mitmproxy** to set
 
 1. To get mitmproxy working for secure sites, you need to make a fake SSL certificate for the site you want to sniff and this would work even when the certificate is invalid because of the reasons given in [Priyank's blog](http://priyaaank.tumblr.com/post/81172916565/validating-ssl-certificates-in-mobile-apps) which you can go through
 2. So now follow the steps given below to create your fake certificate:
-  1. openssl genrsa -out myown.cert.key 8192
-  2. openssl req -new -x509 -key myown.cert.key -out pocketsfake.cert
-  3. Specify all values like Company, BU, Country etc, as they appear in real certificate.
-  4. cat myown.cert.key pocketsfake.cert > pocketsfake.pem
+  ```bash  
+  openssl genrsa -out myown.cert.key 8192
+  openssl req -new -x509 -key myown.cert.key -out fakesite.cert
+  Specify all values like Company, BU, Country etc, as they appear in real certificate
+  cat myown.cert.key fakesite.cert > fakesite.pem
+  ```
+3. Now you can run mitmproxy using this command:
+  ```bash
+  mitmproxy -p 8888 –cert=fakesite.pem
+  ```
+  you can use any available port number in place of 8888
+4. To connect to the network use the same port in advance options setting of the wifi network and then connect
+5. Now you would be able to see request data from the secured site as well using mitmproxy
 
+######So this is how you can create a Raspberry Pi Sniffer. You can tweak the steps and do something really different on your own!
 #####Sources: 
 1. [Raspberry Pi Official Documentation](https://www.raspberrypi.org/help/noobs-setup/)
 2. [Frillip's Blog](https://frillip.com/using-your-raspberry-pi-3-as-a-wifi-access-point-with-hostapd/)
 3. [Marxy's Blog](http://blog.marxy.org/2013/08/reverse-engineering-network-traffic.html)
+4. [Priyank's Blog](http://priyaaank.tumblr.com/post/81172916565/validating-ssl-certificates-in-mobile-apps)
