@@ -6,7 +6,7 @@
 ####Prerequisites:
 
 1. A class 4 Micro SD card of at least 8GB size
-2. A Raspberry Pi 3 board (obviously but you can also the same with a lower model along with a wifi-dongle)
+2. A Raspberry Pi 3 board (obviously but you can also do the same with a lower model Pi along with a wifi-dongle)
 3. A USB cable with an adapter to power the Pi up
 4. Keyboard and Mouse (USB)
 5. A Monitor or a TV as a display for thr Pi
