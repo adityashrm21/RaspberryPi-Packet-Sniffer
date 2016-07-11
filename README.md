@@ -27,8 +27,8 @@
 
 1. Slot in your Micro SD card into the slot provided on the Raspberry Pi which would fit in only one way
 2. Plug in your USB keyboard and mouse in the port provided on the Pi
-3. Now for display, connect the HDMI cable from the Pi to the Monitor or TV depending on what you are using (you need to make sure that your monitor/TV is turned on and the appropriate mode is selected for display(HDMI/VGA/etc.)
-4. Now plug in the ethernet cable into the ethernet port provided on th Pi neext to the USB ports (you can know if its working if your Pi shows a flickering green light when turned on)
+3. Now for display, connect the HDMI cable from the Pi to the Monitor or TV depending on what you are using (you need to make sure that your monitor/TV is turned on and the appropriate mode is selected for display(HDMI/VGA/etc.))
+4. Now plug in the ethernet cable into the ethernet port provided on th Pi next to the USB ports (you can know if its working if your Pi shows a flickering green light when turned on)
 5. When all these cables are plugged in properly, you are ready to fire up the Pi. Just plug in the micro USB power supply and this would turn on and boot your Raspberry Pi
 
 ####Logging into your Raspberry Pi
