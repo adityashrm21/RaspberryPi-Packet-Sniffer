@@ -1,9 +1,9 @@
 # RaspberryPi-Packet-Sniffer
-#####A simple HTTP and HTTPS sniffing tool created using Raspberry Pi (only for educational purposes)
+##### A simple HTTP and HTTPS sniffing tool created using Raspberry Pi (only for educational purposes)
 
 ### Setting up your Raspberry Pi
 
-####Prerequisites:
+#### Prerequisites:
 
 1. A class 4 Micro SD card of at least 8GB size
 2. A Raspberry Pi 3 board (obviously, but you can also do the same with a lower model Pi along with a wifi-dongle)
@@ -14,7 +14,7 @@
 7. Ethernet cable if you want to access internet through ethernet on the Pi which actualy we do want(Pi 3 comes with a built-in wireless LAN card which is very useful for our purpose, otherwise we would have needed a Wifi-Dongle)
 
 
-####Getting the Operating System to install on the Pi
+#### Getting the Operating System to install on the Pi
 
 1. You need to install the latest version of NOOBS or Raspbian on your Pi, and for that you need a bootable SD card with the OS installed on it
 2. You need to format your SD card first. Download [SD Formatter 4.0](https://www.sdcard.org/downloads/formatter_4/) for either Windows or Mac and install it
@@ -23,7 +23,7 @@
 5. Download the [Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/) and install it on your computer. Now run the application and choose the OS image and the SD card drive from the drop down or browse menu and click on write
 6. Now you have your OS on the SD card and you are ready to use it to boot your Pi
 
-####Plugging in your Raspberry Pi
+#### Plugging in your Raspberry Pi
 
 1. Slot in your Micro SD card into the slot provided on the Raspberry Pi which would fit in only one way
 2. Plug in your USB keyboard and mouse in the port provided on the Pi
@@ -31,7 +31,7 @@
 4. Now plug in the ethernet cable into the ethernet port provided on th Pi next to the USB ports (you can know if its working if your Pi shows a flickering green light when turned on)
 5. When all these cables are plugged in properly, you are ready to fire up the Pi. Just plug in the micro USB power supply and this would turn on and boot your Raspberry Pi
 
-####Logging into your Raspberry Pi
+#### Logging into your Raspberry Pi
 
 1. Now after the Pi has completed the boot process, a login will appear where you can use the default settings for login into the Pi: Username - pi, Password - raspberry
 2. When you have succeessfully logged in, you will see the command line prompt pi@raspberrypi~$
@@ -47,7 +47,7 @@ and
   ``` 
 to update your Pi to the newest available updates
 
-####Steps to create a Wifi-access point
+#### Steps to create a Wifi-access point
 
 1. If you have an ethernet cable plugged in into your Pi, you can start the web browser and see if the internet is working or not
 2. Now type ifconfig in the terminal and note the IP address of your Pi in the eth0 interface(this would be the IP address of the Pi)
@@ -93,20 +93,20 @@ and it should assign **wlan0** with a static IP address
   sudo nano /etc/hostapd/hostapd.conf
   ```
 with the contents given in the hostapd.conf file in the repository
-10. To check whether all we've been doing is working or not, just run this command
+11. To check whether all we've been doing is working or not, just run this command
   
   ```bash
   sudo /usr/sbin/hostapd /etc/hostapd/hostapd.conf
   ```
 If everything goes well, you should be able to see the network Pi3-AP from your mobile phone or laptop device. You can try connecting to it in whoch case you would see some output from the Pi but you won't be allotted an IP address until we configure dnsmasq. So press **Ctrl + c** to stop it
-11. Right now, hostapd is not configured to work on a fresh boot. So we also need to tell hostapd where to look for the config file when it starts up on boot. Open up the default configuration file with 
+12. Right now, hostapd is not configured to work on a fresh boot. So we also need to tell hostapd where to look for the config file when it starts up on boot. Open up the default configuration file with 
 
   ```bash
   sudo nano /etc/default/hostapd 
   ```
   and find the line **#DAEMON_CONF=""** and replace it with **DAEMON_CONF="/etc/hostapd/hostapd.conf"** and this would do the job
   
-####Setting up dnsmasq
+#### Setting up dnsmasq
 
 1. The dnsmasq config file that comes preinstalled contains a lot of functionalities that we don't require at all so we delete it and create a new one using and paste the contents of **dnsmasq.conf** into it:
 
@@ -162,7 +162,7 @@ If everything goes well, you should be able to see the network Pi3-AP from your 
   ```
 Now you would be able to connect to the internet through the Pi's network!
 
-####Man in the Middle Pi
+#### Man in the Middle Pi
 
 Now we would tweak some settings and configurations and use **mitmproxy** to set up a man in the middle attack using our Raspberry Pi on it's hotspot
 
@@ -181,7 +181,7 @@ Now we would tweak some settings and configurations and use **mitmproxy** to set
 5. You can use the [mitmproxy documentation](http://docs.mitmproxy.org/en/stable/mitmproxy.html) for more information on how to use, look and store the data collected by mitmproxy
 6. So we are set up as a man in the middle for the users connected to our Pi's network. But note here that we are only able to get information about the **HTTP** requests and not the **HTTPS** requests which are encrypted and need further hacking to break into which we do below
 
-####Configuring mitmproxy for secure connections
+#### Configuring mitmproxy for secure connections
 
 1. To get mitmproxy working for secure sites, you need to make a fake SSL certificate for the site you want to sniff and this would work even when the certificate is invalid because of the reasons given in [Priyank's blog](http://priyaaank.tumblr.com/post/81172916565/validating-ssl-certificates-in-mobile-apps) which you can go through
 2. So now follow the steps given below to create your fake certificate:
@@ -204,8 +204,8 @@ Now we would tweak some settings and configurations and use **mitmproxy** to set
 4. To connect to the network use the same port in advance options setting of the wifi network and then connect
 5. Now you would be able to see request data from the secured site as well using mitmproxy
 
-######So this is how you can create a Raspberry Pi Sniffer. You can tweak the steps and do something really different on your own!
-#####Sources: 
+###### So this is how you can create a Raspberry Pi Sniffer. You can tweak the steps and do something really different on your own!
+##### Sources: 
 1. [Raspberry Pi Official Documentation](https://www.raspberrypi.org/help/noobs-setup/)
 2. [Frillip's Blog](https://frillip.com/using-your-raspberry-pi-3-as-a-wifi-access-point-with-hostapd/)
 3. [Marxy's Blog](http://blog.marxy.org/2013/08/reverse-engineering-network-traffic.html)
