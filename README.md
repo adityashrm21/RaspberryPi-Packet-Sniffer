@@ -144,7 +144,7 @@ If everything goes well, you should be able to see the network Pi3-AP from your 
   ```bash
   sudo nano /lib/dhcpcd/dhcpcd-hooks/70-ipv4-nat
   ```
-  and adding this to the file and save it:
+  and adding this to the file and saving it:
   
   ```bash
   iptables-restore < /etc/iptables.ipv4.nat  
