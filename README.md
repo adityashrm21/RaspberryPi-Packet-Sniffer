@@ -138,6 +138,7 @@ If everything goes well, you should be able to see the network Pi3-AP from your 
   sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
   ```
   and this will copy the settings to **iptables.ipv4.nat** file
+  
 6. now we need dhcpcd to run this and we do this by opening:
 
   ```bash
