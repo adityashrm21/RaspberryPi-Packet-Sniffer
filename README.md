@@ -37,14 +37,14 @@
 2. When you have succeessfully logged in, you will see the command line prompt pi@raspberrypi~$
 3. Now once you are logged into you Pi, run
 
-  ```bash 
-  sudo apt-get update 
-  ``` 
-and 
+  ```bash
+  sudo apt-get update
+  ```
+and
 
-  ```bash 
+  ```bash
   sudo apt-get upgrade
-  ``` 
+  ```
 to update your Pi to the newest available updates
 
 #### Steps to create a Wifi-access point
@@ -60,7 +60,7 @@ to update your Pi to the newest available updates
 5. The next step you need to do is to provide your wlan0 interface with a static IP. We already have our raspberry pi connected to the ethernet cable from whihc we will be sharing our internet
 6. We will be using dhcpcd(most feature-rich open source DHCP client) to configure our interface configuration so open it up using
 
-  ```bash 
+  ```bash
   sudo nano /etc/dhcpcd.conf
   ```
 7. We need to tell it that our wlan0 has a static IP. So add these lines to it at the bottom of the file:
@@ -69,7 +69,7 @@ to update your Pi to the newest available updates
   interface wlan0
       static ip_address=172.24.1.1/24
   ```
-8. We also need to prevent **wpa_supplicant** from running and interfering with setting up **wlan0** in access point mode. To do this open up the interface configuration file with 
+8. We also need to prevent **wpa_supplicant** from running and interfering with setting up **wlan0** in access point mode. To do this open up the interface configuration file with
 
   ```bash
   sudo nano /etc/network/interfaces
@@ -82,7 +82,7 @@ and comment out the line containing **wpa-conf** in the **wlan0** section, so th
   #    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
   ```
 9. Now restart **dhcpcd** with
-  
+
   ```bash
   sudo service dhcpcd restart
   ```
@@ -92,23 +92,23 @@ and it should assign **wlan0** with a static IP address
   ```bash
   sudo nano /etc/hostapd/hostapd.conf
   ```
-with the contents given in the hostapd.conf file in the repository
+with the contents given in the [hostapd.conf](https://github.com/adityashrm21/RaspberryPi-Packet-Sniffer/blob/master/hostapd.conf) file
 11. To check whether all we've been doing is working or not, just run this command
-  
+
   ```bash
   sudo /usr/sbin/hostapd /etc/hostapd/hostapd.conf
   ```
 If everything goes well, you should be able to see the network Pi3-AP from your mobile phone or laptop device. You can try connecting to it in whoch case you would see some output from the Pi but you won't be allotted an IP address until we configure dnsmasq. So press **Ctrl + c** to stop it
-12. Right now, hostapd is not configured to work on a fresh boot. So we also need to tell hostapd where to look for the config file when it starts up on boot. Open up the default configuration file with 
+12. Right now, hostapd is not configured to work on a fresh boot. So we also need to tell hostapd where to look for the config file when it starts up on boot. Open up the default configuration file with
 
   ```bash
-  sudo nano /etc/default/hostapd 
+  sudo nano /etc/default/hostapd
   ```
   and find the line **#DAEMON_CONF=""** and replace it with **DAEMON_CONF="/etc/hostapd/hostapd.conf"** and this would do the job
-  
+
 #### Setting up dnsmasq
 
-1. The dnsmasq config file that comes preinstalled contains a lot of functionalities that we don't require at all so we delete it and create a new one using and paste the contents of **dnsmasq.conf** into it:
+1. The dnsmasq config file that comes preinstalled contains a lot of functionalities that we don't require at all so we delete it and create a new one using and paste the contents of [dnsmasq.conf](https://github.com/adityashrm21/RaspberryPi-Packet-Sniffer/blob/master/dnsmasq.conf) into it:
 
   ```bash
   sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig  
@@ -130,7 +130,7 @@ If everything goes well, you should be able to see the network Pi3-AP from your 
   ```bash
   sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE  
   sudo iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT  
-  sudo iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT 
+  sudo iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
   ```
 5. But to enable the above settings everytime we boot, we need to do:
 
@@ -138,18 +138,18 @@ If everything goes well, you should be able to see the network Pi3-AP from your 
   sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
   ```
   and this will copy the settings to **iptables.ipv4.nat** file
-  
+
 6. now we need dhcpcd to run this and we do this by opening:
 
   ```bash
   sudo nano /lib/dhcpcd/dhcpcd-hooks/70-ipv4-nat
   ```
   and adding this to the file and saving it:
-  
+
   ```bash
   iptables-restore < /etc/iptables.ipv4.nat  
   ```
-  
+
 7. now we are just one step behind sharing our internet through the Pi, just do:
 
   ```bash
@@ -157,7 +157,7 @@ If everything goes well, you should be able to see the network Pi3-AP from your 
   sudo service dnsmasq start
   ```
   and reboot the Pi for rechecking everything worked correctly using:
-  
+
   ```bash
   sudo reboot
   ```
@@ -172,7 +172,7 @@ Now we would tweak some settings and configurations and use **mitmproxy** to set
   ```bash
   sudo pip install mitmproxy
   ```
-2. Now we need to set up a **transparent proxy** using the iptables which can be done using the commands in the **mitm.sh** file in the repository
+2. Now we need to set up a **transparent proxy** using the iptables which can be done using the commands in the [mitm.sh](https://github.com/adityashrm21/RaspberryPi-Packet-Sniffer/blob/master/mitm.sh) file
 3. Now run the **mitm.sh** file using:
 
   ```bash
@@ -192,12 +192,12 @@ Now we would tweak some settings and configurations and use **mitmproxy** to set
   openssl req -new -x509 -key myown.cert.key -out fakesite.cert
   ```
   Specify all values like Company, BU, Country etc, as they appear in real certificate
-  
+
   ```bash
   cat myown.cert.key fakesite.cert > fakesite.pem
   ```
 3. Now you can run mitmproxy using this command:
-  
+
   ```bash
   mitmproxy -p 8888 –cert=fakesite.pem
   ```
@@ -206,7 +206,7 @@ Now we would tweak some settings and configurations and use **mitmproxy** to set
 5. Now you would be able to see request data from the secured site as well using mitmproxy
 
 ###### So this is how you can create a Raspberry Pi Sniffer. You can tweak the steps and do something really different on your own!
-##### Sources: 
+##### Sources:
 1. [Raspberry Pi Official Documentation](https://www.raspberrypi.org/help/noobs-setup/)
 2. [Frillip's Blog](https://frillip.com/using-your-raspberry-pi-3-as-a-wifi-access-point-with-hostapd/)
 3. [Marxy's Blog](http://blog.marxy.org/2013/08/reverse-engineering-network-traffic.html)
